@@ -1,14 +1,17 @@
 import numpy as np
 import torch
-from models.base_model import BaseModel
+import sys
+sys.path.append('/home/rene1337/RSCPH/dimitri/generalizablersc/models')
+from base_model import BaseModel
 torch.backends.cudnn.benchmark = True
 import models.networks as nets
 from layers.pooling import MAC, SPoC, GeM, RMAC
 from util.evaluate import accuracy, compute_map, Batch_mAP
 from util.util import set_bn_eval
 from layers.loss import ArcMarginProduct, SmoothAP
-from models.networks import init_net
+from networks import init_net
 import tqdm
+from options.options import Options
 from collections import OrderedDict
 from util.diffusion import alpha_query_expansion
 
@@ -319,3 +322,19 @@ def split_first_dim_linear(x, first_two_dims):
     if len(x_shape) > 1:
         new_shape += [x_shape[-1]]
     return x.view(new_shape)
+
+
+if __name__ == "__main__":
+    opt = Options().parse()  # get training options
+    fscmodel = deepdescModel(opt, mode="eval", nbands=3)
+    fscmodel.setup(opt)  # regular setup: load and print networks; create schedulers
+    norm = nets.L2N()
+
+    proto_patches = torch.randn(10, 3, 256, 256)
+    o = fscmodel.forward(proto_patches)
+    proto_desc = norm(torch.mean(o, dim=0)[None, ])
+
+    target_patches = torch.randn(64, 3, 256, 256)
+    target_descs = fscmodel.forward(target_patches)
+
+    sim = torch.matmul(proto_desc, target_descs.t()).T

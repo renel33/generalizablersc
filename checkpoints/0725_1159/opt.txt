@@ -1,0 +1,40 @@
+----------------- Options ---------------
+                    alpha: 1.0                           
+             alpha_policy: constant                      
+               batch_size: 128                           	[default: 1]
+               batch_test: 0                             
+                    beta1: 0.5                           
+          checkpoints_dir: /scratch/checkpoints/bigearthnet/3bands	[default: /tmp/]
+                 dataroot: None                          
+             dataset_size: None                          
+                    debug: False                         
+                      dim: 2048                          
+                  gpu_ids: 0                             
+                   imsize: 120                           
+                        k: 5                             
+               load_epoch: None                          
+                load_from: None                          
+                load_size: 286                           
+                       lr: 0.001                         	[default: 2e-05]
+                lr_policy: linear                        
+                     mean: [0.485, 0.456, 0.406]         
+                    model: mldeepdesc                    	[default: deepdesc]
+                     name: 0725_1159                     
+                      net: resnet50                      
+                    niter: 200                           	[default: 5]
+              niter_decay: 40                            
+              num_threads: 8                             	[default: 4]
+                     pool: gem                           
+               pretrained: False                         	[default: True]
+               print_freq: 100                           
+          save_epoch_freq: 1                             
+                      std: [0.229, 0.224, 0.225]         
+             test_dataset: None                          
+                test_freq: 1                             
+            train_dataset: bigearthnet                   
+                      val: True                          
+                 val_freq: 1000                          	[default: 1]
+                val_ratio: 0.0                           
+                  verbose: False                         
+                   whiten: True                          	[default: False]
+----------------- End -------------------

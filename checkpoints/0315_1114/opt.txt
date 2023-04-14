@@ -1,0 +1,40 @@
+----------------- Options ---------------
+                    alpha: 1.0                           
+             alpha_policy: constant                      
+               batch_size: 32                            	[default: 1]
+               batch_test: 512                           	[default: 0]
+                    beta1: 0.5                           
+          checkpoints_dir: /scratch/checkpoints/rsfinetuning	[default: /tmp/]
+                 dataroot: None                          
+             dataset_size: None                          
+                    debug: False                         
+                      dim: 512                           	[default: 2048]
+                  gpu_ids: 0                             
+                   imsize: 256                           
+                        k: 5                             
+               load_epoch: None                          
+                load_from: None                          
+                load_size: 286                           
+                       lr: 0.0001                        	[default: 2e-05]
+                lr_policy: linear                        
+                     mean: [0.485, 0.456, 0.406]         
+                    model: deepdesc                      
+                     name: 0315_1114                     
+                      net: resnet50                      	[default: resnet34]
+                    niter: 10                            	[default: 5]
+              niter_decay: 5                             	[default: 40]
+                  nprotos: 1                             
+              num_threads: 4                             
+                     pool: gem                           
+               pretrained: True                          
+               print_freq: 100                           
+          save_epoch_freq: 1                             
+                      std: [0.229, 0.224, 0.225]         
+             test_dataset: whurs19                       	[default: None]
+                test_freq: 1                             
+                      val: False                         	[default: True]
+                 val_freq: 1                             
+                val_ratio: 0.0                           
+                  verbose: False                         
+                   whiten: True                          	[default: False]
+----------------- End -------------------
